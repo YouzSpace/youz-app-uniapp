@@ -12,6 +12,18 @@
 			}
 		}
 	}, {
+		"path": "pages/web-view/index",
+		"style": {
+			"navigationStyle": "custom",
+			"enablePullDownRefresh": false,
+			"app-plus": {
+				"scrollIndicator": "none"
+			},
+			"h5": {
+				"overflow": "hidden"
+			}
+		}
+	}, {
 		"path": "pages/disclaimer/index",
 		"style": {
 			"navigationStyle": "custom",

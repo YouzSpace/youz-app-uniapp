@@ -21,6 +21,11 @@
         <text class="paragraph">5. 本站信息来源于网络，所有资源的版权归属原作者或相关权利人。若因资源引发版权争议，相关责任与本站无关。如涉及侵权问题，请版权方通过邮箱 youz.space@foxmail.com 与我们联系处理，我们将积极配合。</text>
         <text class="paragraph">请您在使用本站资源前仔细阅读本声明，一旦您下载或使用本站资源，即视为您已同意并接受本声明的全部内容。</text>
         
+        <view class="agreement-links">
+          <text class="link" @click="openServiceAgreement">查看服务协议</text>
+          <text class="link" @click="openPrivacyPolicy">查看隐私政策</text>
+        </view>
+        
         <text class="update-time">更新时间：2025年</text>
       </view>
     </scroll-view>
@@ -40,6 +45,16 @@ export default {
   },
   methods: {
     // 可以在这里添加页面相关的方法
+    openServiceAgreement() {
+      uni.navigateTo({
+        url: '/pages/web-view/index?url=/static/service-agreement.html&title=服务协议'
+      });
+    },
+    openPrivacyPolicy() {
+      uni.navigateTo({
+        url: '/pages/web-view/index?url=/static/privacy-policy.html&title=隐私政策'
+      });
+    }
   }
 }
 </script>
@@ -128,11 +143,25 @@ export default {
   margin-bottom: 20rpx;
 }
 
+.agreement-links {
+  margin: 30rpx 0;
+  display: flex;
+  justify-content: center;
+  gap: 40rpx;
+}
+
+.link {
+  color: #4F46E5;
+  font-size: 28rpx;
+  text-decoration: underline;
+  padding: 10rpx 0;
+}
+
 .update-time {
   display: block;
   font-size: 24rpx;
   color: #999;
   text-align: right;
-  margin-top: 40rpx;
+  margin-top: 20rpx;
 }
 </style>
