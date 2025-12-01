@@ -36,23 +36,39 @@ export default {
   data() {
     return {
       title: 'GitHub',
-      currentVersion: '1.0.0', // 从package.json获取的版本号
+      currentVersion: '1.0.0', // 初始版本号
       appUpdateInfo: null
     }
   },
   onLoad() {
-    // 页面加载时的逻辑
-  },
-  methods: {
-    // 检查更新
-    checkUpdate() {
-      uni.showLoading({
-        title: '检查更新中...'
-      });
-      
-      // 获取云端版本信息
-      this.fetchCloudVersion();
+      // 页面加载时，从manifest.json获取版本号
+      this.getCurrentVersion();
     },
+    methods: {
+      // 获取当前版本号（从manifest.json）
+      getCurrentVersion() {
+        try {
+          // 在uni-app中，plus.runtime.version可以获取应用的版本名称
+          if (typeof plus !== 'undefined' && plus.runtime) {
+            this.currentVersion = plus.runtime.version;
+          } else {
+            // H5环境下，可以尝试从manifest.json中读取
+            // 或者保留默认值
+            console.log('plus对象不可用，使用默认版本号');
+          }
+        } catch (error) {
+          console.error('获取版本号失败', error);
+        }
+      },
+      // 检查更新
+      checkUpdate() {
+        uni.showLoading({
+          title: '检查更新中...'
+        });
+        
+        // 获取云端版本信息
+        this.fetchCloudVersion();
+      },
     
     // 获取云端版本信息
     fetchCloudVersion() {
