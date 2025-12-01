@@ -1,0 +1,68 @@
+/* 
+ * 柚子软件库 - uni-app 全局样式变量
+ */
+
+/* 主题颜色 */
+$primary-color: #4F46E5;
+$secondary-color: #7C3AED;
+$accent-color: #EC4899;
+
+/* 渐变色 */
+$gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+$gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+
+/* 中性色 */
+$text-primary: #1F2937;
+$text-secondary: #6B7280;
+$text-muted: #9CA3AF;
+$border-color: #E5E7EB;
+$background-light: #F3F4F6;
+$background-white: #FFFFFF;
+
+/* 间距 */
+$spacing-xs: 8rpx;
+$spacing-sm: 16rpx;
+$spacing-md: 24rpx;
+$spacing-lg: 32rpx;
+$spacing-xl: 48rpx;
+
+/* 圆角 */
+$border-radius-sm: 8rpx;
+$border-radius-md: 12rpx;
+$border-radius-lg: 16rpx;
+$border-radius-xl: 24rpx;
+$border-radius-full: 50rpx;
+
+/* 阴影 */
+$shadow-sm: 0 2rpx 8rpx rgba(0,0,0,0.1);
+$shadow-md: 0 4rpx 12rpx rgba(0,0,0,0.15);
+$shadow-lg: 0 8rpx 24rpx rgba(0,0,0,0.2);
+
+/* 字体大小 */
+$font-size-xs: 20rpx;
+$font-size-sm: 24rpx;
+$font-size-md: 28rpx;
+$font-size-lg: 32rpx;
+$font-size-xl: 36rpx;
+$font-size-2xl: 48rpx;
+
+/* 动画时间 */
+$transition-fast: 0.2s;
+$transition-normal: 0.3s;
+$transition-slow: 0.5s;
+
+/* Z-index层级 */
+$z-dropdown: 1000;
+$z-sticky: 1020;
+$z-fixed: 1030;
+$z-modal-backdrop: 1040;
+$z-modal: 1050;
+$z-popover: 1060;
+$z-tooltip: 1070;
+
+/* uni-app 响应式断点 */
+$screen-xs: 480rpx;
+$screen-sm: 768rpx;
+$screen-md: 992rpx;
+$screen-lg: 1200rpx;
+$screen-xl: 1920rpx;

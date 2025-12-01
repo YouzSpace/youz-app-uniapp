@@ -1,0 +1,67 @@
+{
+	"pages": [{
+		"path": "pages/index/index",
+		"style": {
+			"navigationStyle": "custom",
+			"enablePullDownRefresh": false,
+			"app-plus": {
+				"scrollIndicator": "none"
+			},
+			"h5": {
+				"overflow": "hidden"
+			}
+		}
+	}, {
+		"path": "pages/disclaimer/index",
+		"style": {
+			"navigationStyle": "custom",
+			"enablePullDownRefresh": true,
+			"app-plus": {
+				"scrollIndicator": "none"
+			},
+			"h5": {
+				"overflow": "hidden"
+			}
+		}
+	}, {
+		"path": "pages/github/index",
+		"style": {
+			"navigationStyle": "custom",
+			"enablePullDownRefresh": false,
+			"app-plus": {
+				"scrollIndicator": "none"
+			},
+			"h5": {
+				"overflow": "hidden"
+			}
+		}
+	}],
+	"globalStyle": {
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "",
+		"navigationBarBackgroundColor": "#4F46E5",
+		"backgroundColor": "#F3F4F6"
+	},
+	"tabBar": {
+		"color": "#8B8C8E",
+		"selectedColor": "#4F46E5",
+		"backgroundColor": "#FFFFFF",
+		"borderStyle": "black",
+		"list": [{
+			"pagePath": "pages/index/index",
+			"text": "应用",
+			"iconPath": "/static/icons/应用.png",
+			"selectedIconPath": "/static/icons/应用.png"
+		}, {
+			"pagePath": "pages/disclaimer/index",
+			"text": "免责声明",
+			"iconPath": "/static/icons/免责声明.png",
+			"selectedIconPath": "/static/icons/免责声明.png"
+		}, {
+			"pagePath": "pages/github/index", 
+			"text": "GitHub",
+			"iconPath": "/static/icons/github.png",
+			"selectedIconPath": "/static/icons/github.png"
+		}]
+	}
+}
