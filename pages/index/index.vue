@@ -1,28 +1,31 @@
 <template>
 	<view class="container">
-		<!-- 搜索栏 - 替换导航栏 -->
-		<view class="search-section">
-			<view class="search-box">
-				<input 
-					v-model="searchQuery" 
-					placeholder="搜索软件、游戏、应用..."
-					@input="onSearchInput"
-					class="search-input"
-				/>
-				<view class="search-icon">🔍</view>
+		<!-- 搜索栏和分类栏容器 -->
+		<view class="search-category-container">
+			<!-- 搜索栏 -->
+			<view class="search-section">
+				<view class="search-box">
+					<input 
+						v-model="searchQuery" 
+						placeholder="搜索软件、游戏、应用..."
+						@input="onSearchInput"
+						class="search-input"
+					/>
+					<view class="search-icon">🔍</view>
+				</view>
 			</view>
-		</view>
 
-		<!-- 分类标签 -->
-		<view class="category-section" v-if="categories.length > 0">
-			<view class="category-tabs">
-				<view 
-					v-for="category in categories" 
-					:key="category.id"
-					:class="['tab-item', { active: activeCategory === category.id }]"
-					@click="switchCategory(category.id)"
-				>
-					{{ category.name }}
+			<!-- 分类标签 -->
+			<view class="category-section" v-if="categories.length > 0">
+				<view class="category-tabs">
+					<view 
+						v-for="category in categories" 
+						:key="category.id"
+						:class="['tab-item', { active: activeCategory === category.id }]"
+						@click="switchCategory(category.id)"
+					>
+						{{ category.name }}
+					</view>
 				</view>
 			</view>
 		</view>
@@ -79,10 +82,7 @@ export default {
 				{ id: 'all', name: '全部' },
 				{ id: 'AE工程', name: 'AE工程' },
 				{ id: 'XP模块', name: 'XP模块' },
-				{ id: '剪辑软件', name: '剪辑软件' },
-				{ id: '游戏辅助', name: '游戏辅助' },
-				{ id: '系统工具', name: '系统工具' },
-				{ id: '其他应用', name: '其他应用' }
+				{ id: '谷歌应用', name: '谷歌应用' }
 			],
 			categories: [],
 			searchTimer: null
@@ -213,16 +213,12 @@ export default {
 	},
 		
 		extractCategories() {
-			const categorySet = new Set();
-			this.apps.forEach(app => {
-				if (app.category) {
-					categorySet.add(app.category);
-				}
-			});
-			
+			// 只保留我们需要的三个分类
 			this.categories = [
 				{ id: 'all', name: '全部' },
-				...Array.from(categorySet).map(cat => ({ id: cat, name: cat }))
+				{ id: 'AE工程', name: 'AE工程' },
+				{ id: 'XP模块', name: 'XP模块' },
+				{ id: '谷歌应用', name: '谷歌应用' }
 			];
 		},
 		
@@ -289,12 +285,8 @@ export default {
 		inferCategory(name, subtitle) {
 			const keywords = {
 				'AE工程': ['ae', 'after effects', '模板', '特效', '动效', 'pr', 'premiere'],
-				'XP模块': ['xp', 'xposed', '模块', 'lsp', 'ed', 'lsposed', '太极'],
-				'游戏辅助': ['游戏', '修改', '破解', '辅助', '外挂', '脚本'],
-				'剪辑软件': ['剪辑', '视频', '编辑', 'edius', 'final cut', '达芬奇'],
-				'系统工具': ['系统', '工具', '优化', '清理', '管理', 'root'],
-				'设计软件': ['设计', 'ps', 'photoshop', 'ai', 'illustrator', 'sketch'],
-				'开发工具': ['开发', '编程', '代码', 'ide', '编译', '调试']
+				'XP模块': ['xp', 'xposed'],
+				'谷歌应用': ['google', '谷歌']
 			};
 			
 			const text = (name + ' ' + (subtitle || '')).toLowerCase();
@@ -305,7 +297,8 @@ export default {
 				}
 			}
 			
-			return '其他应用';
+			// 不再将无关应用自动归入谷歌应用分类，改为返回一个不会显示的默认值
+			return '未分类';
 		},
 		
 		// 工具方法 - 推断开发者
@@ -369,16 +362,20 @@ export default {
 	overflow-y: auto;
 }
 
-/* 搜索栏 - 替换导航栏 */
-.search-section {
-	background: linear-gradient(135deg, #4285f4 0%, #669df6 50%, #3367d6 100%);
-	padding: 20rpx;
-	padding-top: calc(var(--status-bar-height) + 20rpx);
+/* 搜索栏和分类栏容器 */
+.search-category-container {
 	position: fixed;
 	top: 0;
 	left: 0;
 	right: 0;
 	z-index: 999;
+}
+
+/* 搜索栏 */
+.search-section {
+	background: linear-gradient(135deg, #4285f4 0%, #669df6 50%, #3367d6 100%);
+	padding: 20rpx;
+	padding-top: calc(var(--status-bar-height) + 20rpx);
 	height: 120rpx;
 }
 
@@ -410,11 +407,7 @@ export default {
 .category-section {
 	background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 30%, #ffffff 100%);
 	border-bottom: 1rpx solid #dadce0;
-	position: fixed;
-	top: 170rpx;
-	left: 0;
-	right: 0;
-	z-index: 998;
+	padding-top: 30rpx; /* 增加上边距，确保分类栏完全显示在搜索栏下方 */
 }
 
 /* 分类标签 - 保持原版设计 */
@@ -449,7 +442,7 @@ export default {
 	gap: 24rpx;
 	padding: 20rpx;
 	padding-top: 20rpx;
-	margin-top: 280rpx; /* 为固定的搜索栏和分类留出更多空间 */
+	margin-top: 260rpx; /* 将应用列表向上移动20px */
 	background: #f8f9fa;
 }
 

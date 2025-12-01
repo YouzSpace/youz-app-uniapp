@@ -26,7 +26,7 @@
         <text class="star-info">如果您觉得项目有用，请给我们点个Star⭐</text>
       </view>
     </view>
-  </view>pp
+  </view>
 </template>
 
 <script>

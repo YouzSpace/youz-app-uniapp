@@ -50,13 +50,13 @@
 		"list": [{
 			"pagePath": "pages/index/index",
 			"text": "应用",
-			"iconPath": "/static/icons/应用.png",
-			"selectedIconPath": "/static/icons/应用.png"
+			"iconPath": "/static/icons/apps.png",
+			"selectedIconPath": "/static/icons/apps.png"
 		}, {
 			"pagePath": "pages/disclaimer/index",
 			"text": "免责声明",
-			"iconPath": "/static/icons/免责声明.png",
-			"selectedIconPath": "/static/icons/免责声明.png"
+			"iconPath": "/static/icons/mzsm.png",
+			"selectedIconPath": "/static/icons/mzsm.png"
 		}, {
 			"pagePath": "pages/github/index", 
 			"text": "GitHub",
