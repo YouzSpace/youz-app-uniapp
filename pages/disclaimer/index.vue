@@ -47,12 +47,12 @@ export default {
     // 可以在这里添加页面相关的方法
     openServiceAgreement() {
       uni.navigateTo({
-        url: '/pages/web-view/index?url=/static/service-agreement.html&title=服务协议'
+        url: '/pages/web-view/index?url=static/service-agreement.html&title=服务协议'
       });
     },
     openPrivacyPolicy() {
       uni.navigateTo({
-        url: '/pages/web-view/index?url=/static/privacy-policy.html&title=隐私政策'
+        url: '/pages/web-view/index?url=static/privacy-policy.html&title=隐私政策'
       });
     }
   }

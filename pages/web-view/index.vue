@@ -19,7 +19,14 @@ export default {
   onLoad(options) {
     // 从页面参数中获取URL和标题
     if (options.url) {
-      this.webUrl = options.url;
+      // 对于本地HTML文件，需要使用正确的路径格式
+      if (options.url.startsWith('/static/')) {
+        // 在uni-app中，web-view加载本地HTML文件需要使用相对路径
+        // 移除开头的斜杠，使用相对路径格式
+        this.webUrl = options.url.substring(1);
+      } else {
+        this.webUrl = options.url;
+      }
     }
     if (options.title) {
       this.title = options.title;
