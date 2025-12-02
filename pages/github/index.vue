@@ -11,7 +11,15 @@
         <text class="version-info">当前版本：{{ currentVersion }}</text>
         <button class="check-update-btn" @click="checkUpdate">检查更新</button>
         
+
+        
         <view class="project-list">
+          <view class="project-item" @click="openProject('online-version')">
+            <text class="project-name">在线版本</text>
+            <text class="project-desc">柚子软件库</text>
+            <text class="visit-btn">访问项目</text>
+          </view>
+          
           <view class="project-item" @click="openProject('main-repo')">
             <text class="project-name">youz-app-uniapp</text>
             <text class="project-desc">柚子云Store前端应用</text>
@@ -221,12 +229,14 @@ export default {
       }
     },
     openProject(projectType) {
-      // 这里可以根据不同项目类型打开不同的GitHub链接
+      // 这里可以根据不同项目类型打开不同的链接
       let url = 'https://github.com/YouzSpace';
       if (projectType === 'main-repo') {
         url = 'https://github.com/YouzSpace/youz-app-uniapp';
       } else if (projectType === 'api-repo') {
         url = 'https://github.com/YouzSpace/apps';
+      } else if (projectType === 'online-version') {
+        url = 'http://126261.xyz';
       }
       
       // 封装uni.openURL调用

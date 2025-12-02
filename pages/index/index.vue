@@ -407,7 +407,7 @@ export default {
 .category-section {
 	background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 30%, #ffffff 100%);
 	border-bottom: 1rpx solid #dadce0;
-	padding-top: 50rpx; /* 增加上边距，确保分类栏完全显示在搜索栏下方 */
+	padding-top: 60rpx; /* 增加上边距，确保分类栏完全显示在搜索栏下方 */
 }
 
 /* 分类标签 - 保持原版设计 */
